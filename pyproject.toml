@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crisissum"
+version = "0.1.0"
+description = "Efficient and Scalable Retrieval System for CrisisFacts"
+readme = "README.rst"
+authors = [
+  {name = "Dheeraj Oruganty", email = "db2winfb@gmail.com"},
+  {name = "Will Corbin"},
+  {name = "Pranav Patil"}
+]
+maintainers = [
+  {name = "Dheeraj Oruganty", email = "db2winfb@gmail.com"},
+  {name = "Will Corbin"},
+  {name = "Pranav Patil"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = {text = "MIT License"}
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi",
+    "requests",
+    "uvicorn",
+    "sentence-transformers",
+    "pandas",
+    "python-multipart",
+    "rank-bm25",
+    "huggingface_hub[hf_transfer]",
+    "hf_transfer",
+    "torch",
+    "rouge-score==0.1.2",
+    "httpx",
+    "gradio",
+    "psutil",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "faiss-gpu",
+    "numpy<2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip_gitignore = true
